@@ -6,3 +6,4 @@ David Gonzalez
 
 # Participantes
 Brenda Montiel
+Berenice Rosquero
