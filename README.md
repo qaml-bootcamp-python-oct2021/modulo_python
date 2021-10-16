@@ -9,3 +9,5 @@ Brenda Montiel
 Berenice Rosquero
 Marcelo Equise
 Yuridia Kleiman
+Ivan de la FuenteS
+Mariela Gutierrez
