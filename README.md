@@ -8,3 +8,8 @@ David Gonzalez
 Brenda Montiel
 Berenice Rosquero
 Tony De La Torre
+Marcelo Equise
+Yuridia Kleiman
+Ivan de la FuenteS
+Mariela Gutierrez
+Salvador Sandoval
