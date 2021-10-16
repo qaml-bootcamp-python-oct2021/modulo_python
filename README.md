@@ -5,3 +5,9 @@ Este repositorio pertenece al modulo de Python del bootcamp de Octubre 2021
 David Gonzalez
 
 # Participantes
+Brenda Montiel
+Berenice Rosquero
+Marcelo Equise
+Ivan de la FuenteS
+Mariela Gutierrez
+Salvador Sandoval
