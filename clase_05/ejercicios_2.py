@@ -23,6 +23,10 @@ def modulo(num1,num2):
     res = num1 % num2
     return res
 
+def entero_a_flotante(num1):
+    res = float(num1)
+    return res
+
 resultado = suma(a,b)
 print(f"Suma de {a} y {b} es {resultado}")
 
@@ -37,3 +41,6 @@ print(f"División de {a} entre {b} es {resultado}")
 
 resultado = modulo(a,b)
 print(f"Módulo de {a} entre {b} es {resultado}")
+
+resultado = entero_a_flotante(b)
+print(f"Convirtiendo entero {b} a flotante {resultado}")
