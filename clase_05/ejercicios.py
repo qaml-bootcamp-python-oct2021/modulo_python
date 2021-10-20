@@ -46,11 +46,11 @@ def compra1(cantidad_billetera,chocolate,agua):
     print(f'¿Me alcanza el dinero para un chocolate y agua? {puedo_comprar}')
     print(f'El total de la compra es: {total_compra}')
 
-def compra2(cantidad_billetera,chocolate,agua):
+def compra2(cantidad_billetera,chocolate,):
     total_compra = chocolate
     puedo_comprar = cantidad_billetera >= total_compra
     print(f'¿Me alcanza el dinero para un chocolate? {puedo_comprar}')
     print(f'El total de la compra es: {total_compra}')
 
 compra1(cantidad_billetera,chocolate,agua)
-compra2(cantidad_billetera,chocolate,agua)
+compra2(cantidad_billetera,chocolate)
