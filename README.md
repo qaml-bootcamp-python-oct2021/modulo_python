@@ -16,3 +16,8 @@ Salvador Sandoval
 Juan Luis Larios
 Yami Gutierrez T
 Clara Torres
+Cristian Briores
+
+# Clase 19-10
+> Operadores de Asignacion y Relacionales
+> Funciones
