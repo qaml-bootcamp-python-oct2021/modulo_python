@@ -15,9 +15,11 @@ def modulo(a,b):
 
 def int_to_float(num_int):
     return float(num_int)
-
-print  (f'Suma:{suma(12.5,34)}')   
-print  (f'Resta:{resta(12.5,34)}')   
-print  (f'Multiplicación:{multiplicacion(12.5,34)}')   
-print  (f'Mod:{modulo(12.5,34)}')   
-print  (f'Int to float:{int_to_float(10)}') 
+    
+a= 12.5
+b= 34
+print  (f'Suma:{suma(a,b)}')   
+print  (f'Resta:{resta(a,b)}')   
+print  (f'Multiplicación:{multiplicacion(a,b)}')   
+print  (f'Mod:{modulo(a,b)}')   
+print  (f'Int to float:{int_to_float(b)}') 
