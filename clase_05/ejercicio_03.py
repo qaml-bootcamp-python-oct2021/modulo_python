@@ -6,7 +6,7 @@ def compra(saldo,chocolate, agua):
     print(f'Compra es posible = {compra_posible}')
     if(compra_posible):
         saldo_actual= saldo- costo_total
-        print(f'Saldo despues de la compra = {saldo-costo_total}')
+        print(f'Saldo despues de la compra = {saldo_actual}')
 
 compra(200, 150, 100)
 compra(200, 150, 0)
