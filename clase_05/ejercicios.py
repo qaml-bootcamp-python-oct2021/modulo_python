@@ -34,7 +34,7 @@ def dividir(num_a, num_b):
 
 #funcion modulo b entre a
 def sacar_modulo(num_a, num_b):
-    resultado = num_b / num_a
+    resultado = num_b % num_a
     return resultado
 
 #funcion convertir entero a flotante
