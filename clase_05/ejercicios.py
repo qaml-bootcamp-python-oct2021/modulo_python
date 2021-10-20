@@ -9,7 +9,7 @@ def suma(a,b):
     return total
 
 def resta(a,b):
-    total = a - b
+    total = b - a
     return total
 
 def multiplicacion(a,b):
@@ -17,7 +17,7 @@ def multiplicacion(a,b):
     return total
 
 def division(a,b):
-    total = b//a
+    total = b/a
     return total
 
 def modulo(a,b):
