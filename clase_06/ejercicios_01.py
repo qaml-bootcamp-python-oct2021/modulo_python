@@ -13,7 +13,7 @@ def know_season(month_number):
         print('verano') 
     elif month_number >= 9 and month_number <= 11:
         print('otoño')
-    elif month_number >= 12 and month_number <= 2:
+    elif month_number == 12 or month_number == 1 or month_number == 2:
         print('invierno')
     else:
         print('''El mes ingresado no existe.
