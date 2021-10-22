@@ -4,19 +4,19 @@ current_day = datetime.date.today().day
 current_month = datetime.date.today().month
 current_year = datetime.date.today().year
 
-dia = 3
-mes = 8
+dia = 21
+mes = 10
 anio = 1987
 
 def ya_cumplio_anios(mes, dia):
-    return mes < current_month and dia < current_day
+    return mes <= current_month and dia <= current_day
 
 def calcular_edad(dia, mes, anio):
-    edad = current_year - anio -1
+    edad = current_year - anio
     if ya_cumplio_anios(mes, dia):
-        edad = edad + 1
         message = 'ya cumplio años este año'
     else:
+        edad -= 1
         message = 'no cumplio años este año todavia'
     print(edad)
     print(message)
