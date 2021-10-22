@@ -8,6 +8,6 @@ elif edad <14:
 elif altura < 1.62:
     print("Altura no valida")
 else:
-    print("diviertete")
+    print("Diviertete")
 
 
