@@ -1,14 +1,8 @@
 def validar_edad(edad):
-    if edad > 14:
-        return True
-    else:
-        return False
+    return edad > 14
 
 def validar_altura(altura):
-    if altura >= 1.62:
-        return True
-    else:
-        return False
+    return altura >= 1.62
 
 def validar_permisos(edad,altura):
     if validar_edad(edad) and validar_altura(altura):
