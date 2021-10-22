@@ -1,14 +1,14 @@
 
 
-mes = 12
+mes = 1
 
-if mes >=1 and mes<=3:
+if mes >=3 and mes<=5:
     print("Estamos en Primavera")
-elif mes >=4 and mes<=6:
+elif mes >=6 and mes<=8:
     print("Estamos en Verano")
-elif mes >=7 and mes<=9:
+elif mes >=9 and mes<=11:
     print("Estamos en Otoño")
-elif mes >=10 and mes <=12:
+elif mes  ==12 or mes >=1 and mes<=2 :
     print("Estamos en Invierno")
 else: 
     print("""El mes ingresado no existe

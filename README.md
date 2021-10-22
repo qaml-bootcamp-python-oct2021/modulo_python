@@ -18,9 +18,6 @@ Yami Gutierrez T
 Clara Torres
 Cristian Briores
 
-# Clase 05 : 19-10-2021
+# Clase 19-10
 > Operadores de Asignacion y Relacionales
 > Funciones
-
-# Clase 06 : 21-10-2021
-> Operadores Logicos y Condicionales
