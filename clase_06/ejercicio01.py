@@ -8,7 +8,9 @@ def temporada(mes):
     elif mes >= 9 and mes <= 12:
         print ("Es otoño")
     else:
-        print("Error. Verifique por favor")
+        print('''El mes ingresado no existe
+        Por favor verifique e intente de nuevo
+        'La Gerencia' ''')
 
 
 temporada(10)
