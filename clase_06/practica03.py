@@ -8,7 +8,7 @@ dia = 20
 mes = 8
 anio = 1900
 
-def edadPersona(año,current_year):
+def edadPersona(anio,current_year):
     if anio >= 1920:
         edad = current_year - anio
         print(f'La persona tiene {edad} año(s)')
@@ -24,7 +24,7 @@ def cumplioAños(mes,current_month):
     else:
         print('La persona aun no cumple años este año')
 
-def generacion(año,current_year):
+def generacion(anio,current_year):
     if anio >= 1920 and anio <= 1939:
         print('Generacion silenciosa')
     elif anio >= 1940 and anio <= 1959:
