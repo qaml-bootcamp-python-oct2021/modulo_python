@@ -6,7 +6,7 @@ current_year = datetime.date.today().year
 
 dia = 21
 mes = 10
-anio = 1987
+anio = 1919
 
 def ya_cumplio_anios(mes, dia):
     return mes <= current_month and dia <= current_day
@@ -30,8 +30,10 @@ def saber_generacion(anio):
         print('Generacion X')
     elif anio >=1980 and anio <= 1989:
         print('Generacion Y o millennials')
-    else:
+    elif anio >=1990:
         print('Generacion Z')
+    else:
+        print('Año fuera de rango')
 
 calcular_edad(dia, mes, anio)
 saber_generacion(anio)
