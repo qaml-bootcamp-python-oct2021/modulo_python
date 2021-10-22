@@ -5,7 +5,7 @@
 
 month_number = 11
 
-def now_season(month_number):
+def know_season(month_number):
     
     if month_number >= 3 and month_number <= 5:
         print('primavera')
@@ -20,4 +20,4 @@ def now_season(month_number):
 Por favor verifique e intente de nuevo 
 "La Gerencia"''')
 
-now_season(month_number)
+know_season(month_number)
