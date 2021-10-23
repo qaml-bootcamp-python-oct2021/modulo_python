@@ -20,4 +20,4 @@ def cal_suma_pares(numero):
         print(suma)
     return suma
 
-print(f'Sumatoria: {cal_suma_pares()}')
+print(f'Sumatoria: {cal_suma_pares(4)}')
