@@ -24,3 +24,6 @@ Cristian Briores
 
 # Clase 06 : 21-10-2021
 > Operadores Logicos y Condicionales
+
+#Clase 07 : 23-10-2021
+> Loops (While and For)
