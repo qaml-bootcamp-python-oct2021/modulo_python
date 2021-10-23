@@ -17,11 +17,11 @@ def validar_numeros(num_a, num_b):
 #imprimiendo numeros entre A y B
 def imprimir_numeros(num_a, num_b):
     if (validar_numeros(num_a,num_b)):
-        contador = num_b - 1
+        contador = num_a + 1
         print(f"Los siguientes numeros se encuentran entre {num_a} y {num_b}:")
-        while (contador > num_a):
+        while (contador < num_b):
             print(f"* {contador}")
-            contador -= 1
+            contador += 1
         
 
 imprimir_numeros(numero_a,numero_b)
