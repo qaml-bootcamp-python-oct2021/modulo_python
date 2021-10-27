@@ -27,3 +27,6 @@ Cristian Briores
 
 # Clase 07 : 23-10-2021
 > Loops (While and For)
+
+# Clase 08 : 26-10-2021
+> Listas y Tuplas
