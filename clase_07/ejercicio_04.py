@@ -10,9 +10,8 @@ def multiplicar_numero(numero_a, numero_b):
     return numero_a * numero_b
 
 def imprimir_escalera():
-    
-     print(numero_aleatorio)
-     for number in range (numero_aleatorio):
+    print(numero_aleatorio)
+    for number in range (numero_aleatorio):
         print('*' * number)
 
 imprimir_tabla()
