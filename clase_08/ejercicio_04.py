@@ -1,4 +1,4 @@
-#Ejercicio 04 Tuplas
+#Ejercicio 04 Tuplas 
 import random
 puntos=(25,18,15,12,10,8,6,4,2,1)
 
