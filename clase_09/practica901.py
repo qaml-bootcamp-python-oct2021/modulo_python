@@ -27,7 +27,6 @@ def nuevoLibro(titulo,autor,genero):
         'genero' : genero 
     }
 
-def ingresarLibro(libro)
-}
+#def ingresarLibro(libro)
 
-alumnos['alumnos'].append(nuevo_alumno)
+#alumnos['alumnos'].append(nuevo_alumno)
