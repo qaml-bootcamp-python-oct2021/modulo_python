@@ -30,3 +30,6 @@ Cristian Briores
 
 # Clase 08 : 26-10-2021
 > Listas y Tuplas
+
+# Clase 09 : 28-10-2021
+> Diccionarios
