@@ -1,0 +1,8 @@
+#TUPLAS
+#NO PUEDEN SER MODIFICADOS LOS VALORES DE UNA TUPLA CREADA, A DIFERENCIA DE LAS LISTAS
+my_tuple = ()
+my_tuple = tuple()
+my_tuple = (1,1,2,3)
+
+#PARA ACCEDER A UN VALOR DE TUPLA SE USA "[]"
+my_tuple[0]
