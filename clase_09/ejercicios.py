@@ -20,9 +20,9 @@
 
 
 
-# libro = crear_libro('Mujeres','Charles Bukowsky','ficcion')
+# libro = crear_libro('Mujeres','Charles Bukowski','relato')
 # guardar_libro(libro)
-# libro = crear_libro('El Cartero','Charles Bukowsky','ficcion')
+# libro = crear_libro('El Cartero','Charles Bukowski','relato')
 # guardar_libro(libro)
 # print_libros()
 
@@ -64,9 +64,23 @@ def buscar_contacto(nombre):
         index += 1
     return None
 
-def mostrar_contacto(contacto):
+def mostrar_contacto(contacto : dict):
     for key, value in contacto.items():
         print(f'{key} - {value}')
+
+def eliminar_contacto(nombre):
+    index = 0
+    result = False
+    while index < len(agenda['contactos']) and not result:
+        contactos = agenda['contactos'] 
+        contacto = contactos[index]
+        if contacto['nombre'] == nombre:
+            contactos.pop(index)
+            result = True
+            print('Contacto eliminado')
+        index += 1
+    if not result:
+        print('No existe un contacto con el nombre ingresado. Intente de nuevo')
 
 opcion = int(input('''
 1 - Para crear contacto
@@ -90,8 +104,8 @@ while opcion != 0:
         else:
             print('El contacto ingresado no existe. Intente de nuevo')
     elif opcion == 4:
-        #eliminar contacto
-        pass
+        nombre = get_contacto_a_buscar()
+        eliminar_contacto(nombre)
     else:
         print('opcion errada, intente de nuevo')
 
