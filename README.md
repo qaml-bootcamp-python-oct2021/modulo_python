@@ -33,3 +33,8 @@ Cristian Briores
 
 # Clase 09 : 28-10-2021
 > Diccionarios
+
+# Clase 10 : 30-10-2021
+> Archivos
+> Manejo de Errores
+> Logs
