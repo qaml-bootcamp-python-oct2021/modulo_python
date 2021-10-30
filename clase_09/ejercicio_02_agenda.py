@@ -8,11 +8,7 @@ def crear_contacto():
     nombre=input('Nombre: ')
     telefono= input('Telefono: ')
     email = input('Email: ')
-    return {
-        'nombre':nombre,
-        'telefono':telefono,
-        'email':email
-    }
+    return 
 
 def visualizar_agenda():
     for contacto in agenda.get('contacto'):

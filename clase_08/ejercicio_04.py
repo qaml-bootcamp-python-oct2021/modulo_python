@@ -9,10 +9,10 @@ def obtener_pares():
             pares+=1
     return pares
 
-def obtener_puntos(cantidad):
+def obtener_puntos(cantidad_posiciones):
     indice=0
     suma= 0
-    while indice< cantidad:
+    while indice< cantidad_posiciones:
         suma+= puntos [indice]
         indice+=1
     return suma
