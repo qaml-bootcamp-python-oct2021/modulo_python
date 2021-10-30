@@ -80,7 +80,10 @@ while operador != 0:
         #borrar contacto
         nombre = buscar()
         index = consultar(operador, nombre)
-        borrar(index)
+        if index is not None:
+            borrar(index)
+        else:
+            print('Contacto no existe')
     elif operador == 3:
         #consultas
         operador2 = consulta()
