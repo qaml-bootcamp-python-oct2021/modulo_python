@@ -18,7 +18,7 @@ def nuevo_curso():
     }
 
 def buscar_curso():
-    curso_a_buscar = input("Nombre de curso: ")
+    curso_a_buscar = input("Nombre de curso a modificar: ")
     nuevo_estado = input("Nuevo estado: ")
 
     data = load_data()
@@ -31,10 +31,23 @@ def buscar_curso():
 
 def mostrar_cursos():
     data = load_data()
-     
+    print('---------LISTADO DE CURSOS---------')  
     for curso in data['cursos']:
-        print(curso)
+        for key,value in curso.items():
+            if key == "nombre":
+                print(f'{value}')  
+                break
     
+
+def ver_detalles():
+    curso_a_buscar = input("Nombre de curso a ver: ")
+    
+    data = load_data()
+    for curso in data['cursos']:
+        for key,value in curso.items():
+            if key == "nombre" and value == curso_a_buscar:
+                print(curso)
+                break
         
 
 def save_file(data):
@@ -63,12 +76,15 @@ def run_program():
             guardar_curso()
         elif accion == '2': #Buscar curso
             buscar_curso()
-        elif accion == '3': #Buscar curso
+        elif accion == '3': #mostrar cursos
             mostrar_cursos()
+        elif accion == '4': #mostrar cursos
+            ver_detalles()
         accion = input('''Elige la acción deseada
         1. Crear curso
         2. Cambiar status de curso
         3. Mostrar todos los cursos
+        4. Ver detalles de curso
         0. Salir
         ''')
 

@@ -1,1 +1,1 @@
-{"cursos": [ {"nombre": "Python", "cantidad_alumnos": "5", "estado": "Activo", "cantidad_clases": "9"}, {"nombre": "Selenium", "cantidad_alumnos": "14", "estado": "No iniciado", "cantidad_clases": "14"}]}
+{"cursos": [{"nombre": "Python", "cantidad_alumnos": "5", "estado": "Activo", "cantidad_clases": "9"}, {"nombre": "Selenium", "cantidad_alumnos": "14", "estado": "No iniciado", "cantidad_clases": "14"}]}
