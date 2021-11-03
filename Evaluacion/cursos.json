@@ -1,0 +1,28 @@
+{
+    "cursos": [
+        {
+            "nombre": "we",
+            "cantidad_alumnos": "we",
+            "estado": "we",
+            "cantidad_clases": "12"
+        },
+        {
+            "nombre": "dsdsd",
+            "cantidad_alumnos": "sdsd",
+            "estado": "alisson",
+            "cantidad_clases": "223232"
+        },
+        {
+            "nombre": "dsds",
+            "cantidad_alumnos": "sdfdf",
+            "estado": "nuevo",
+            "cantidad_clases": "23"
+        },
+        {
+            "nombre": "matematicas",
+            "cantidad_alumnos": "12",
+            "estado": "activo",
+            "cantidad_clases": "12"
+        }
+    ]
+}
