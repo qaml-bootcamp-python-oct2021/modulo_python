@@ -39,9 +39,27 @@ def cargar_cursos():
         return json.load(json_file)
 
 def mostrar_cursos_no_iniciados(cursos):
+    list_temp = []
     for curso in cursos['cursos']:
         if curso['estado'] == 'No Iniciado':
-            print(curso)
+            list_temp.append(curso['nombre'])
+
+    print('Cursos no iniciados:')
+    for element in list_temp:
+        print(f'{(list_temp.index(element)+1)} - {element}')
+
+    opcion = int(input('Seleccione el curso a ser dado de alta\n'))
+
+    curso = cursos['cursos'][opcion -1]
+    curso['estado'] = 'Activo'
+    print(curso)
+
+def mostrar_cursos(cursos):
+    index = 0
+    for curso in cursos['cursos']:
+        index += 1
+        nombre_curso = curso.get('nombre')
+        print(f'{index} - Curso: {nombre_curso}')
 
 opcion = int(input('''
 Gestion de Cursos de QA Minds Labs
@@ -64,8 +82,8 @@ while opcion != 0:
         #buscar curso
         pass
     elif opcion == 4:
-        #mostrar cursos
-        pass
+        cursos = cargar_cursos()
+        mostrar_cursos(cursos)
     else:
         print('Valor incorrecto')
     
