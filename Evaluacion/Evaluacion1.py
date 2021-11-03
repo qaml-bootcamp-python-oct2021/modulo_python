@@ -38,7 +38,8 @@ def consultar(opcion, nom_curso):
         index = 0
         file = open('cursos_qaminds.txt','r')
         archivo = file.readlines()
-        for list in archivo:
+        
+        #for list in archivo:
             cursos_list = list.split(',')
         while index < len(mis_cursos):
             cursos = mis_cursos['mis_cursos'] 
