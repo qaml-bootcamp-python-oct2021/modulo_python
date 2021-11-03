@@ -21,6 +21,16 @@ def agregar_catalogo_en_archivo(dict_catalogo):
     with open(path_archivo,'w') as mi_json:
         json.dump(dict_catalogo,mi_json)
 
+
+def obtener_catalogo_de_archivo():
+
+    path_archivo = generar_path()
+
+    with open(path_archivo,'r') as mi_json:
+        nvo_catalogo = json.load(mi_json)
+
+    return nvo_catalogo
+
 def checar_archivo(path_archivo):
     
     if os.path.exists(path_archivo):
@@ -46,16 +56,18 @@ def generar_curso(dict_catalogo):
     return dict_catalogo
     
 
-def imprimir_catalogo():
-    path_archivo = generar_path()
-
-    with open(path_archivo,'r') as mi_json:
-        print(json.load(mi_json))
+def imprimir_catalogo(dict_catalogo):
+    print(f"*******Total de cursos: {len(dict_catalogo['Cursos']) }*****")
+    for curso in dict_catalogo['Cursos']:
+        print('------------')
+        for key, value in curso.items():
+            print(f"{key}: {value}.")
+    print('*********************************************')
 
 def imprimir_curso(mi_curso):
     print("********Curso********")
     for key, value in mi_curso.items():
-        print(f"{key}: {value}.")
+        print(f"{key}: {value}.\n")
 
 
 def buscar_curso(dict_catalogo, nombre_curso, opcion):
@@ -96,29 +108,43 @@ def opciones():
 def inicio(dict_catalogo):
 
     seleccion = "0"
+    vacio = True
+
+    if (checar_archivo(generar_path())):
+        vacio = False
+        dict_catalogo = obtener_catalogo_de_archivo()
+    else:
+        vacio = True
+
     while seleccion != "6":
         seleccion = opciones()
  
  
-        if (seleccion == str(1)):
+        if (seleccion == "1"):
             dict_catalogo = generar_curso(dict_catalogo)
             agregar_catalogo_en_archivo(dict_catalogo)
             seleccion = "0"
+            vacio = False
         elif (seleccion == "2" or seleccion == "3" or seleccion == "5"):
-            if (not checar_archivo(generar_path())):
+            if (vacio):
                 print("Catálogo vacio.. Por favor agregue un curso antes de proceder.")
             else:
                 nombre_curso = input("Digite nombre de curso a buscar: ")
                 dict_catalogo = buscar_curso(dict_catalogo,nombre_curso,seleccion)
             
             seleccion = "0"
-        elif (seleccion == str(4)):
-            if (not checar_archivo(generar_path())):
+        elif (seleccion == "4"):
+            if (vacio):
                 print("Catálogo vacio.. Por favor agregue un curso antes de proceder.")
             else:
-                imprimir_catalogo()
-                
+                imprimir_catalogo(dict_catalogo)
+
             seleccion = "0"
+        elif (seleccion == "6"):
+            print("************¡Hasta luego!************")
+
+            if (not vacio):
+                agregar_catalogo_en_archivo(dict_catalogo)
         else:
             print("Opcion incorrecta, seleccione una opción válida...")
             seleccion = "0"
