@@ -8,6 +8,9 @@ catalogo = {
     "Cursos" : []
 }
 
+def imprimir_espacios():
+    print("\n")
+
 def generar_path():
     separador = os.path.sep
     path_archivo = f'.{separador}clase_11_checkpoint{separador}mi_catalogo_cursos.json'
@@ -62,12 +65,14 @@ def imprimir_catalogo(dict_catalogo):
         print('------------')
         for key, value in curso.items():
             print(f"{key}: {value}.")
+        print('------------')
     print('*********************************************')
+    imprimir_espacios()
 
 def imprimir_curso(mi_curso):
     print("********Curso********")
     for key, value in mi_curso.items():
-        print(f"{key}: {value}.\n")
+        print(f"{key}: {value}.")
 
 
 def buscar_curso(dict_catalogo, nombre_curso, opcion):
@@ -83,18 +88,22 @@ def buscar_curso(dict_catalogo, nombre_curso, opcion):
             found = True
             if (opcion == "2"):
                 curso['Estado'] = 'Activo'
+                print(f"Curso {curso['Nombre']} ha cambiado su estado a {curso['Estado']}.")
             elif (opcion == "3"):
                 curso['Estado'] = 'Terminado'
+                print(f"Curso {curso['Nombre']} ha cambiado su estado a {curso['Estado']}.")
             else:
                 imprimir_curso(curso)
 
     if(not found):
         print("El curso no se encuentra registrado...")
 
+    imprimir_espacios()
+
     return dict_catalogo
 
 def opciones():
-    opcion = input("""Bienvenido al Catálogo de cursos QA Minds - Seleccione una opción:
+    opcion = input("""Catálogo de Cursos QA Minds - Seleccione una opción:
             * 1. Alta de Curso
             * 2. Iniciar Curso
             * 3. Terminar Curso
@@ -102,6 +111,7 @@ def opciones():
             * 5. Buscar Curso
             * 6. Salir
             --> """)
+    imprimir_espacios()
     return opcion
 
 
@@ -122,12 +132,13 @@ def inicio(dict_catalogo):
  
         if (seleccion == "1"):
             dict_catalogo = generar_curso(dict_catalogo)
-            agregar_catalogo_en_archivo(dict_catalogo)
+            #agregar_catalogo_en_archivo(dict_catalogo)
             seleccion = "0"
             vacio = False
         elif (seleccion == "2" or seleccion == "3" or seleccion == "5"):
             if (vacio):
                 print("Catálogo vacio.. Por favor agregue un curso antes de proceder.")
+                imprimir_espacios()
             else:
                 nombre_curso = input("Digite nombre de curso a buscar: ")
                 dict_catalogo = buscar_curso(dict_catalogo,nombre_curso,seleccion)
@@ -136,6 +147,7 @@ def inicio(dict_catalogo):
         elif (seleccion == "4"):
             if (vacio):
                 print("Catálogo vacio.. Por favor agregue un curso antes de proceder.")
+                imprimir_espacios()
             else:
                 imprimir_catalogo(dict_catalogo)
 
@@ -147,6 +159,7 @@ def inicio(dict_catalogo):
                 agregar_catalogo_en_archivo(dict_catalogo)
         else:
             print("Opcion incorrecta, seleccione una opción válida...")
+            imprimir_espacios()
             seleccion = "0"
 
 inicio(catalogo)
