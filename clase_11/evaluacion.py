@@ -19,7 +19,6 @@ def crear_curso():
 
 def buscar_curso(lista_cursos, nombre_curso):
     indice = 0
-
     while indice< len(lista_cursos):
         if lista_cursos[indice].get('nombre')== nombre_curso:
            return  lista_cursos[indice]
@@ -59,7 +58,6 @@ def mostrar_cursos(lista_cursos):
 
 def guardar_curso(lista_curso,curso):
     lista_curso.append(curso)
- 
     guardar_en_archivo(lista_curso)
      
 def leer_archivo():
@@ -77,7 +75,7 @@ def leer_archivo():
 def guardar_en_archivo(lista_cursos):
     with open(ruta_archivo,'w') as archivo:
         qa_minds={"cursos":lista_cursos}
-        json.dump(lista_cursos,archivo)  
+        json.dump(qa_minds,archivo)  
 
 def pedir_opcion():
     return  int(input('''
@@ -90,7 +88,6 @@ def pedir_opcion():
 
 def iniciar_sistema():
     lista_cursos=leer_archivo().get('cursos')
-    print(lista_cursos)
     opcion_menu=pedir_opcion()
     while opcion_menu != 0:
         if opcion_menu == 1:
