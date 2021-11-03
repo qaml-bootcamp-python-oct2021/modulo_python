@@ -1,1 +1,1 @@
-{"cursos": [{"nombre": "fdsfsdf", "cantidad_alumnos": "fdsfdsf", "estado": "fdsf", "cantidad_clases": "sdfds"}, {"nombre": "fdsfsdf", "cantidad_alumnos": "gfdgdfg", "estado": "gdfgdfg", "cantidad_clases": "gdfgdfg"}, {"nombre": "fdfs", "cantidad_alumnos": "gdfgdfg", "estado": "sdfsdf", "cantidad_clases": "sfsdf"}]}
+{"cursos": [ {"nombre": "Python", "cantidad_alumnos": "5", "estado": "Activo", "cantidad_clases": "9"}, {"nombre": "Selenium", "cantidad_alumnos": "14", "estado": "No iniciado", "cantidad_clases": "14"}]}
