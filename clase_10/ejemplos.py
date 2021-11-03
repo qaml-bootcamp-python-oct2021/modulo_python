@@ -51,8 +51,7 @@ nuevo_contacto = {
 }
 data['contactos'].append(nuevo_contacto)
 
-with open('./clase_10/mi_archivo_json.json','w') as json_file:
-    json.dump(data,json_file)
+
 
 with open('./clase_10/mi_archivo_json.json','r') as json_file:
     print(json.load(json_file))
