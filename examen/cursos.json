@@ -1,0 +1,1 @@
+{"cursos": [{"nombre_curso": "java", "alumnos": "3", "status": "Activo", "clases": "3"}, {"nombre_curso": "python", "alumnos": "4", "status": "no activo", "clases": "4"}]}
