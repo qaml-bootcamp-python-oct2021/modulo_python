@@ -41,3 +41,6 @@ David Gonzalez
 
 ## Clase 11 : 02-11-2021
 > - Check (Gestion de Cursos)
+
+## Clase 12 : 04-11-2021
+> - Revision de evaluaciones
