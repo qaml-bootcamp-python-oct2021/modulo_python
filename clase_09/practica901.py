@@ -20,13 +20,30 @@ libreria = {
 
 print(libreria)
 
-def nuevoLibro(titulo,autor,genero):
-    return{
-        'titulo' : titulo,
-        'autor' : autor,
-        'genero' : genero 
-    }
+# ''' Libreria '''
 
-#def ingresarLibro(libro)
+# libreria = {
+#     'libros' : []
+# }
 
-#alumnos['alumnos'].append(nuevo_alumno)
+# def crear_libro(titulo,autor,genero):
+#     return {
+#         'titulo' : titulo,
+#         'autor' : autor,
+#         'genero' : genero
+#     }
+
+# def guardar_libro(libro):
+#     libreria['libros'].append(libro)
+
+# def print_libros():
+#     for libro in libreria['libros']:
+#         print(libro)
+
+
+
+# libro = crear_libro('Mujeres','Charles Bukowski','relato')
+# guardar_libro(libro)
+# libro = crear_libro('El Cartero','Charles Bukowski','relato')
+# guardar_libro(libro)
+# print_libros()
