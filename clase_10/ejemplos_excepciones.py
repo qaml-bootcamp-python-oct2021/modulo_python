@@ -20,25 +20,28 @@ import logging
 logging.basicConfig(level=logging.DEBUG,filename='./clase_10/logs.log',format='%(levelname)s - %(asctime)s - %(message)s')
 log = logging.getLogger()
 
-num_a = 10
-num_b = None
-
-result = 0
-try:
+def division(num_a,num_b):
     try:
-        result = num_a/num_b
-        logging.info('Division Exitosa')
+        return num_a/num_b
     except TypeError:
-        logging.warning('No se puede dividir datos que no sean numeros')
+        log.warning('No se puede dividir datos que no sean numeros')
         raise ValueError('Numeros invalidos')
     except ZeroDivisionError:
-        logging.warning('No se puede dividir por cero')
+        log.warning('No se puede dividir por cero')
         raise ValueError('Numeros invalidos')
     except Exception as err:
-        logging.warning(f'Error general: {err}')
-        raise ValueError('Numeros invalidos')    
-except ValueError:
-    logging.warning('No se pudo dividir los numeros')
-    result = -1
-finally:
-    print(result)
+        log.warning(f'Error general: {err}')
+        raise ValueError('Numeros invalidos')
+
+def operacion():
+    result = 0
+    try:
+        result = division(10,5)
+        log.info('Division Exitosa')
+    except ValueError:
+        log.warning('No se pudo dividir los nuemros')
+        result = -1
+    finally:
+        return result
+
+print(operacion())
