@@ -50,9 +50,12 @@ def mostrar_cursos_no_iniciados(cursos):
 
     opcion = int(input('Seleccione el curso a ser dado de alta\n'))
 
-    curso = cursos['cursos'][opcion -1]
-    curso['estado'] = 'Activo'
-    print(curso)
+    cursos['cursos'][opcion -1]['estado'] = 'Activo'
+    guardar_cambios(cursos)
+
+def guardar_cambios(cursos):
+    with open(json_path, 'w') as json_file:
+        json.dump(cursos, json_file)
 
 def mostrar_cursos(cursos):
     index = 0
