@@ -1,6 +1,6 @@
 from alumnos import Alumno
 from utils import get_alumnos_from_file
-import utils , file_handler , estados
+import utils , file_handler, estados
 
 alumnos = []
 
@@ -9,36 +9,33 @@ def menu_option():
     1 - Para crear un Alumno
     2 - Para buscar un Alumno
     3 - Para editar estado de Alumno
-    4 - Para mostrar Alumnos
+    4 - Para Mostrar Alumnos
     5 - Mostrar Alumnos por estado
     0 - Para salir
     '''))
 
 def actualizar_agenda():
     agenda = {
-    "alumnos" : []
+        "alumnos" : []
     }
     for alumno in alumnos:
         alumno_dict = utils.convertir_alumno_to_dict(alumno)
         agenda['alumnos'].append(alumno_dict)
-
     file_handler.guardar_agenda(agenda)
 
 def crear_alumno():
     nombre = input('Ingrese un nombre de Alumno\n')
     apellido = input('Ingrese un apellido de Alumno\n')
-    email = input('Ingrese un email de Alumno\n')
-    alumno = Alumno(nombre, apellido, email)
+    email = input('Ingrese un mail de Alumno\n')
+    alumno = Alumno(nombre,apellido,email)
     alumnos.append(alumno)
     actualizar_agenda()
-    #return
 
 def mostrar_alumnos():
     global alumnos
     alumnos = utils.get_alumnos_from_file()
     for alumno in alumnos:
-        alumno : Alumno
-        print('--- Alumno ---')
+        print('---- Alumno ----')
         imprimir_datos_alumno(alumno)
         print()
 
@@ -48,20 +45,20 @@ def buscar_alumno():
     index = 0
     result = False
     while index < len(alumnos) and not result:
-        alumno : Alumno = alumnos[index]
+        alumno :Alumno = alumnos[index]
         if nombre == alumno.get_nombre():
             return alumno
         index += 1
     if not result:
-        print('no existe un alumno con ese nombre')
+        print('No existe un Alumno con ese nombre')
     return None
 
 def imprimir_datos_alumno(alumno : Alumno):
     print(alumno.get_info())
 
 def editar_estado_alumno(alumno : Alumno):
-    print(f'El estado actual de {alumno.get_nombre()} es: {alumno.get_estado}')
-    opcion = input('Desea modificar el estado? Y/N')
+    print(f'El estado actual de {alumno.get_nombre()} es: {alumno.get_estado()}')
+    opcion = input('Desea modificar el estado? Y/N\n')
     if opcion == 'Y':
         opcion_estado = int(input(f'''
         1 - Para {estados.ACTIVO}
@@ -71,6 +68,7 @@ def editar_estado_alumno(alumno : Alumno):
         5 - Para {estados.CERTIFICADO}
         '''))
         guardar = False
+
         if opcion_estado == 1:
             alumno.set_estado(estados.ACTIVO)
             guardar = True
@@ -87,7 +85,7 @@ def editar_estado_alumno(alumno : Alumno):
             alumno.set_estado(estados.CERTIFICADO)
             guardar = True
         else:
-            print('Opcion invalida, intente de nuevo')
+            print('Opcion invalida, intente de nuevo.')
         
         if guardar:
             alumno_dict = utils.convertir_alumno_to_dict(alumno)
@@ -97,7 +95,8 @@ alumnos = get_alumnos_from_file()
 
 opcion = menu_option()
 
-while opcion != 0:
+while opcion != 0 :
+
     if opcion == 1:
         crear_alumno()
     if opcion == 2:
