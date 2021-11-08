@@ -44,3 +44,6 @@ David Gonzalez
 
 ## Clase 12 : 04-11-2021
 > - Revision de evaluaciones
+
+## Clase 13 : 06-11-2021
+> - Programacion Orientada a Objetos
