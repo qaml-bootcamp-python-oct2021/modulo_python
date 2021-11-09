@@ -1,3 +1,4 @@
+import json
 
 mis_cursos = {
     'mis_cursos' : []
@@ -26,7 +27,7 @@ def agregar ():
     return curso
 
 def alta (curso):
-    file = open('cursos_qaminds.txt','a')
+    file = open('cursos_qaminds.json','a')
     file.write(f"{curso}\n")
     file.close
 
@@ -36,11 +37,11 @@ def buscar ():
 
 def consultar(opcion, nom_curso):
         index = 0
-        file = open('cursos_qaminds.txt','r')
-        archivo = file.readlines()
-        
-        #for list in archivo:
-            cursos_list = list.split(',')
+        with open('cursos_qaminds.json','r') as file:
+            mis_cursos = json.load(file)
+        #file = json.load(cursos_qaminds.json)
+        #archivo = file.readlines()
+        #mis_cursos = archivo.split(',')
         while index < len(mis_cursos):
             cursos = mis_cursos['mis_cursos'] 
             curso = cursos[index]

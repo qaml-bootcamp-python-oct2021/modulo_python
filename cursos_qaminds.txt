@@ -1,2 +1,0 @@
-{'Curso': 'java', 'Alumnos': '10', 'Estado': 'activo', 'Clases': '10'}
-{'Curso': 'phyton', 'Alumnos': '15', 'Estado': 'inactivo', 'Clases': '30'}
