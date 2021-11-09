@@ -1,7 +1,10 @@
 from enum import Enum
 class Estado (Enum):
-    ACTIVO = 'Activo'
-    MORA = 'Mora'
-    RETIRADO ='Retirado'
-    EGRESADO = 'Egresado'
-    CERTIFICADO = 'Certificado'
+    ACTIVO = 1
+    MORA = 2
+    RETIRADO =3
+    EGRESADO = 4
+    CERTIFICADO = 5
+
+
+

@@ -6,7 +6,7 @@ class Alumno:
         self.__nombre = nombre
         self.__apellido = apellido
         self.__email = email
-        self.__estado = Estado.ACTIVO.value
+        self.__estado = Estado.ACTIVO.name
 
     def get_info(self):
         return f'Nombre: {self.__nombre}, Apellido: {self.__apellido}, Email:{self.__email}, Estado:{self.__estado}'

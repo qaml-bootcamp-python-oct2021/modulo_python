@@ -1,1 +1,1 @@
-{"alumnos": [{"nombre": "Bere", "apellido": "Rosquero", "email": "email@com", "estado": "Activo"}, {"nombre": "Ana", "apellido": "Fuentes", "email": "ana@email.com", "estado": "Activo"}]}
+{"alumnos": [{"nombre": "Bere", "apellido": "Rosquero", "email": "email@com", "estado": "CERTIFICADO"}, {"nombre": "Ana", "apellido": "Fuentes", "email": "ana@email.com", "estado": "ACTIVO"}, {"nombre": "Luis", "apellido": "Fuentes", "email": "luis@email.com", "estado": "ACTIVO"}, {"nombre": "Fer", "apellido": "Montes", "email": "fe@email.com", "estado": "MORA"}]}

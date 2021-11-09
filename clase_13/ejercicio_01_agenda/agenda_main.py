@@ -5,8 +5,6 @@ from alumno import Alumno
 from estado_enum import Estado
 
 lista_alumnos=[]
-def editar_estado_alumno(alumno: Alumno):
-    pass
 
 def crear_alumno():
     nombre = input('Ingrese un nombre de Alumno\n')
@@ -29,31 +27,10 @@ def editar_estado_alumno(alumno : Alumno):
     print(f'El estado actual de {alumno.get_nombre()} es: {alumno.get_estado()}')
     opcion = input('Desea modificar el estado? Y/N\n')
     if opcion == 'Y':
-        opcion_estado = int(input(f'''
-        1 - Para {Estado.ACTIVO.name}
-        2 - Para {Estado.MORA.name}
-        3 - Para {Estado.RETIRADO.name}
-        4 - Para {Estado.EGRESADO.name}
-        5 - Para {Estado.CERTIFICADO.name}
-        '''))
-        guardar = True
-
-        if opcion_estado == 1:
-            alumno.set_estado(Estado.ACTIVO.value)
-        elif opcion_estado == 2:
-            alumno.set_estado(Estado.MORA.value)
-        elif opcion_estado == 3:
-            alumno.set_estado(Estado.RETIRADO.value)
-        elif opcion_estado == 4:
-            alumno.set_estado(Estado.EGRESADO.value)
-        elif opcion_estado == 5:
-            alumno.set_estado(Estado.CERTIFICADO.value)
-        else:
-            print('Opcion invalida, intente de nuevo.')
-            guardar = False
-
-        if guardar:
-          guardar_alumnos()
+        opcion_estado = int(input(get_estado_opcion()))
+        if validar_estado_opcion(opcion_estado)!= None:
+            alumno.set_estado(Estado(opcion_estado).name)
+            guardar_alumnos()
            
 def guardar_alumnos():
     agenda = {
@@ -65,14 +42,35 @@ def guardar_alumnos():
         agenda['alumnos'].append(alumno_dicc)
     archivo_util.guardar_agenda(agenda)
     
-def mostrar_alumnos():
-    for alumno in lista_alumnos:
+def mostrar_alumnos(lista_alumnos_buscar):
+    for alumno in lista_alumnos_buscar:
         alumno:Alumno
-        print('---- Alumno ----')
+        print('::: Alumno :::')
         print(alumno.get_info())
+    if(len(lista_alumnos_buscar)==0):
+        print('::: No hay registros :::')
 
-def mostrar_alumno_estado(estado):
-    pass
+def mostrar_alumnos_estado():
+    opcion_estado = int(input(get_estado_opcion()))
+    if validar_estado_opcion(opcion_estado)!= None:
+        lista_alumnos_estado=[]
+        for alumno in lista_alumnos:
+            if alumno.get_estado() == Estado(opcion_estado).name:
+                lista_alumnos_estado.append(alumno)
+        mostrar_alumnos(lista_alumnos_estado)   
+    
+def get_estado_opcion():
+    opcion_estado='Ingrese::::\n'
+    for estado in Estado:
+        opcion_estado+= f'{estado.value} - Para {estado.name} \n'
+    return opcion_estado
+
+def validar_estado_opcion(opcion_estado):
+        try:
+            return Estado(opcion_estado)
+        except ValueError:
+            print('Opción invalida, intente de nuevo.') 
+            return None
 
 def menu_opcion():
     return int(input('''
@@ -89,27 +87,31 @@ opcion = menu_opcion()
 lista_alumnos_archivo = archivo_util.leer_agenda().get('alumnos')
 if len(lista_alumnos_archivo)> 0:
     lista_alumnos= util.diccionario_to_alumno(lista_alumnos_archivo)
-while opcion != 0 :
 
+while opcion != 0 :
     if opcion == 1:
+        print('-----Creando nuevo alumno-----')
         crear_alumno()
     if opcion == 2:
+        print('-----Buscar por Nombre-----')
         alumno_buscar = buscar_alumno()
         if alumno_buscar != None:
             print(alumno_buscar.get_info())
         else:
             print('Alumno no localizado')
-       
     if opcion == 3:
+        print('-----Editar Estado-----')
         alumno_editar = buscar_alumno()
         if alumno_editar != None:
             editar_estado_alumno(alumno_editar)
         else:
             print('Alumno no localizado')
     if opcion == 4:
-        mostrar_alumnos()
+        print('-----Mostrando todos los alumnos-----')
+        mostrar_alumnos(lista_alumnos)
     if opcion == 5:
-        pass
-      
-
+        print('-----Mostrando alumnos por Estado-----')
+        mostrar_alumnos_estado()
+    else:
+        print('-----Opción invalida-----')
     opcion = menu_opcion()
