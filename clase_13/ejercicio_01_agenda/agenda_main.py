@@ -25,8 +25,8 @@ def buscar_alumno():
     
 def editar_estado_alumno(alumno : Alumno):
     print(f'El estado actual de {alumno.get_nombre()} es: {alumno.get_estado()}')
-    opcion = input('Desea modificar el estado? Y/N\n')
-    if opcion == 'Y':
+    confirmar_edicion = input('Desea modificar el estado? Y/N\n')
+    if confirmar_edicion == 'Y':
         opcion_estado = int(input(get_estado_opcion()))
         if validar_estado_opcion(opcion_estado)!= None:
             alumno.set_estado(Estado(opcion_estado).name)
