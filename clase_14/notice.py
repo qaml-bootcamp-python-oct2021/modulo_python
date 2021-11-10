@@ -1,0 +1,1 @@
+#En esta clase seguimos viendo/resolviendo el ejercicio de la anterior
