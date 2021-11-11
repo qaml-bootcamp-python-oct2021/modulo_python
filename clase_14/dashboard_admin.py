@@ -47,6 +47,58 @@ def buscar_tarea():
 def imprimir_datos_tarea(tarea : Tarea):
     print(tarea.get_info())
 
+def editar_estado_tarea(tarea : Tarea):
+    print(f'El estado actual de {tarea.get_titulo()} es: {tarea.get_estado()}')
+    opcion = input('Desea modificar el estado? Y/N\n')
+    if opcion == 'Y':
+        opcion_estado = int(input(f'''
+        1 - Para {estados.BACKLOG}
+        2 - Para {estados.TODO}
+        3 - Para {estados.DOING}
+        4 - Para {estados.RESOLVED}
+        '''))
+        guardar = utils.setear_estado(tarea,opcion_estado)
+        
+        if guardar:
+            actualizar_tarea(tarea)
+            actualizar_dashboard()
+            print('Estado actualizado satisfactoriamente')
+
+def actualizar_tarea(tarea : Tarea):
+    index = 0
+    result = False
+    while index < len(tareas) and not result:
+        tarea_lista :Tarea = tareas[index]
+        if tarea.get_titulo() == tarea_lista.get_titulo():
+            tareas[index] = tarea
+            result = True
+        index += 1
+    if not result:
+        print('No hay una tarea en el listado de Tareas con ese titulo.')
+
+def mostrar_tareas():
+    for tarea in tareas:
+        print('---- Tarea ----')
+        imprimir_datos_tarea(tarea)
+        print()
+
+def buscar_tareas_estado():
+    opcion_estado = int(input(f''' Ingrese la opcion de estado a buscar
+        1 - Para {estados.BACKLOG}
+        2 - Para {estados.TODO}
+        3 - Para {estados.DOING}
+        4 - Para {estados.RESOLVED}
+        '''))
+
+    estado = utils.convertir_opcion_estado(opcion_estado)
+    if estado is not None:
+        for tarea in tareas:
+            tarea : Tarea    
+            if tarea.get_estado() == estado:
+                imprimir_datos_tarea(tarea)
+    else:
+        print('El estado ingresado es invalido. Intente de nuevo')
+
 opcion = menu_option()
 
 while opcion != 0 :
@@ -58,16 +110,13 @@ while opcion != 0 :
         if tarea is not None:
             imprimir_datos_tarea(tarea)
     if opcion == 3:
-        # tarea = buscar_tarea()
-        # if tarea is not None:
-        #     editar_estado_tarea(tarea)
-        pass
+        tarea = buscar_tarea()
+        if tarea is not None:
+            editar_estado_tarea(tarea)
     if opcion == 4:
-        # mostrar_tareas()
-        pass
+        mostrar_tareas()
     if opcion == 5:
-        # buscar_tareas_estado()
-        pass
+        buscar_tareas_estado()
     if opcion == 6:
         # buscar_tareas_usuario()
         pass
