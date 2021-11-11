@@ -111,7 +111,7 @@ while opcion != 0 :
             imprimir_datos_alumno(alumno)
     if opcion == 3:
         alumno = buscar_alumno()
-        if alumnos is not None:
+        if alumno is not None:
             editar_estado_alumno(alumno)
     if opcion == 4:
         mostrar_alumnos()
