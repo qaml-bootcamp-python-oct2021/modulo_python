@@ -1,9 +1,14 @@
 import os , json
 
 DASHBOARD_FILE = './clase_14/dashboard.json'
+DASHBOARD_USERS_FILE = './clase_14/dashboard_users.json'
 
 dashboard = {
     "tareas" : []
+}
+
+dashboard_users = {
+    "usuarios" : []
 }
     
 def dashboard_existe():
@@ -27,5 +32,17 @@ def guardar_tarea(tarea):
     with open(DASHBOARD_FILE,'w') as file:
         json.dump(dashboard_data,file)
 
-def actualizar_tarea(tarea_existente):
-    pass
+def dashboard_users_existe():
+    if not os.path.exists(DASHBOARD_USERS_FILE):
+        with open(DASHBOARD_USERS_FILE,'w') as file:
+            json.dump(dashboard_users,file)
+
+def leer_dashboard_users():
+    dashboard_users_existe()
+    with open(DASHBOARD_USERS_FILE,'r') as file:
+        data = json.load(file)
+    return data
+
+def guardar_dashboard_users(dashboard_users):
+    with open(DASHBOARD_USERS_FILE,'w') as file:
+        json.dump(dashboard_users,file)

@@ -1,4 +1,5 @@
 from tareas import Tarea
+from usuarios import Usuario
 import file_handler , estados
 
 def convertir_tarea_to_dict(tarea : Tarea):
@@ -48,3 +49,21 @@ def setear_estado(tarea : Tarea, opcion_estado):
         print('Opcion invalida, intente de nuevo.')
         guardar = False
     return guardar
+
+def convertir_usuario_to_dict(usuario : Usuario):
+    dict_usuario = {
+        "nombre" : usuario.get_nombre(),
+        "email" : usuario.get_email(),
+        "id" : usuario.get_id()
+    }
+    return dict_usuario
+
+def get_usuarios_from_file():
+    list_usuarios = []
+    dashboard_users = file_handler.leer_dashboard_users()
+    usuarios = dashboard_users['usuarios']
+    for usuario in usuarios:
+        usuario_o = Usuario(usuario['nombre'],usuario['email'])
+        usuario_o.set_id(usuario['id'])
+        list_usuarios.append(usuario_o)
+    return list_usuarios
