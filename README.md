@@ -47,3 +47,6 @@ David Gonzalez
 
 ## Clase 13 : 06-11-2021
 > - Programacion Orientada a Objetos
+
+## Clase 14 : 10-11-2021
+> - Continuacion Ejercicio Agenda (POO)
