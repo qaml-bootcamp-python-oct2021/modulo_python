@@ -6,5 +6,4 @@ class Estado (Enum):
     EGRESADO = 4
     CERTIFICADO = 5
 
-
-
+   

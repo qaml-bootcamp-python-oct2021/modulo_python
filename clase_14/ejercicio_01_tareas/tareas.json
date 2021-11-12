@@ -1,0 +1,1 @@
+{"tareas": [{"titulo": "Tarea 1", "descripcion": "Act1", "prioridad": "ALTA", "estado": "TODO", "usuario": {"nombre": "Bere", "email": "bere@gmail.com"}}, {"titulo": "Tarea2", "descripcion": "Desc2", "prioridad": "ALTA", "estado": "BACKLOG", "usuario": {"nombre": "David", "email": "david@gmail.com"}}]}
