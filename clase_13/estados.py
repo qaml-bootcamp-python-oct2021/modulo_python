@@ -1,0 +1,5 @@
+ACTIVO ='Activo'
+MORA = 'Mora'
+RETIRADO ='Retirado'
+EGRESADO = 'Egresado'
+CERTIFICADO = 'Certificado'
