@@ -30,7 +30,7 @@ def crear_tarea():
     guardar_tareas()
 
 def buscar_usuario():
-    nombre_usuario = input('Ingrese el nombre del usuario a asignar: ')
+    nombre_usuario = input('Ingrese el nombre del usuario: ')
     indice = 0
     while indice< len(lista_usuarios):
         if lista_usuarios[indice].get_nombre()== nombre_usuario:
@@ -38,7 +38,7 @@ def buscar_usuario():
         indice+=1
     return None
 
-def buscar_tarea():
+def buscar_tarea_nombre():
     nombre_tarea = input('Ingrese el nombre de Tarea: ')
     indice = 0
     while indice< len(lista_tareas):
@@ -47,13 +47,46 @@ def buscar_tarea():
         indice+=1
     return None
 
+def mostrar_tareas_estado():
+    estado_id = input(util.get_estado_opcion())
+    estado_enum= util.validar_estado_opcion(estado_id)
+    if estado_enum != None:
+        estado_nombre = estado_enum.name
+        indice = 0
+        existen_tareas = False
+        while indice< len(lista_tareas):
+            tarea= lista_tareas[indice]
+            if tarea.get_estado()==estado_nombre :
+                print(tarea.get_info())
+                existen_tareas = True
+            indice+=1
+        if not existen_tareas:
+            print(f'No existen tareas con el estado {estado_nombre}')
+
+def mostrar_tareas_usuario():
+    usuario = buscar_usuario()
+    if usuario is None:
+        print('El usuario ingresado no existe')
+    else:
+        existen_tareas = False
+        indice = 0
+        while indice< len(lista_tareas):
+            tarea= lista_tareas[indice]
+            if tarea.get_usuario().get_nombre() == usuario.get_nombre():
+                print(tarea.get_info())
+                existen_tareas = True
+            indice+=1
+        if not existen_tareas:
+            print(f'No existen tareas asignadas al usuario {usuario.get_nombre()}')
+
 def editar_estado_tarea(tarea : Tarea):
     print(f'El estado actual de {tarea.get_titulo()} es: {tarea.get_estado()}')
     confirmar_edicion = input('Desea modificar el estado? Y/N : ')
     if confirmar_edicion == 'Y':
-        opcion_estado = int(input(util.get_estado_opcion()))
-        if util.validar_estado_opcion(opcion_estado)!= None:
-            tarea.set_estado(Estado(opcion_estado).name)
+        estado_id = (input(util.get_estado_opcion()))
+        estado_enum= util.validar_estado_opcion(estado_id)
+        if estado_enum!= None:
+            tarea.set_estado(estado_enum.name)
             guardar_tareas()
 
 def guardar_usuarios():
@@ -112,7 +145,7 @@ while opcion != 0 :
 
     if opcion == 3:
         print('Buscar tarea...')
-        tarea_buscar = buscar_tarea()
+        tarea_buscar = buscar_tarea_nombre()
         if tarea_buscar != None:
             print(tarea_buscar.get_info())
         else:
@@ -120,7 +153,7 @@ while opcion != 0 :
 
     if opcion == 4:
         print('Editando estado de tarea...')
-        tarea_editar = buscar_tarea()
+        tarea_editar = buscar_tarea_nombre()
         if tarea_editar != None:
             editar_estado_tarea(tarea_editar)
         else:
@@ -131,9 +164,11 @@ while opcion != 0 :
         mostrar_tareas()
        
     if opcion == 6:
-        print('-----Mostrar Tareas por estado-----')
+        print('Mostrar Tareas por estado...')
+        mostrar_tareas_estado()
+
     if opcion == 7:
-        print('-----Mostrar Tareas por usuario-----')
-    
-    
+        print('Mostrar Tareas por usuario...')
+        mostrar_tareas_usuario()
+
     opcion = menu_opcion()

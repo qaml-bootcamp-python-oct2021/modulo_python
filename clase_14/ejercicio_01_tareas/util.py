@@ -43,7 +43,7 @@ def get_estado_opcion():
 
 def validar_estado_opcion(opcion_estado):
     try:
-        return Estado(opcion_estado)
+        return Estado(int(opcion_estado))
     except ValueError:
-        print('Opción invalida, intente de nuevo.') 
+        print('Estado invalido, intente de nuevo.') 
         return None
