@@ -12,9 +12,8 @@ def menu_option():
     3 - Para Editar estado de una Tarea
     4 - Para Mostrar Tareas
     5 - Para Mostrar Tareas por estado
-    6 - Para Asignar una Tarea a un Usuario
-    7 - Para Mostrar Tareas asignadas a un Usuario
-    8 - Para Dar de alta a un Usuario
+    6 - Para Mostrar Tareas asignadas a un Usuario
+    7 - Para Dar de alta a un Usuario
     0 - Para salir
     '''))
 
@@ -22,9 +21,20 @@ def crear_tarea():
     titulo = input('Ingrese un titulo para la Tarea\n')
     descripcion = input('Ingrese una descripcion para la Tarea\n')
     prioridad = input('Ingrese una prioridad para la Tarea\n')
-    tarea = Tarea(titulo, descripcion, prioridad)
+    id_usuario = seleccionar_usuario()
+    tarea = Tarea(titulo, descripcion, prioridad, id_usuario)
     tareas.append(tarea)
     actualizar_dashboard()
+
+def seleccionar_usuario():
+    print('Seleccione un Usuario para la Tarea:\n')
+    index = 0
+    for usuario in usuarios:
+        if usuarios:
+            index += 1
+            print(f'{index} - {usuario.get_info()}')
+
+    return int(input())
 
 def actualizar_dashboard():
     dashboard = {
@@ -48,7 +58,7 @@ def buscar_tarea():
     return None
 
 def imprimir_datos_tarea(tarea : Tarea):
-    print(tarea.get_info())
+    print(f'{tarea.get_info()} - Usuario: {usuarios[tarea.get_usuario()-1].get_nombre()}')
 
 def editar_estado_tarea(tarea : Tarea):
     print(f'El estado actual de {tarea.get_titulo()} es: {tarea.get_estado()}')
@@ -84,10 +94,7 @@ def mostrar_tareas():
     for tarea in tareas:
         if tareas:
             index += 1
-            # print('---- Tarea ----')
-            # imprimir_datos_tarea(tarea)
-            # print()
-            print(f'{index} - {tarea.get_info()}')
+            print(f'{index} - {tarea.get_info()} - Usuario: {usuarios[tarea.get_usuario()-1].get_nombre()}')
             
 
 def buscar_tareas_estado():
@@ -146,32 +153,20 @@ def buscar_usuario():
     print('No existe el Usuario con ese nombre')
     return None
 
-def asignar_tarea_usuario(usuario : Usuario):
-    print(f'Seleccione una Tarea para el usuario {usuario.get_nombre}')
-    mostrar_tareas()
-    opcion = int(input())
-    index = opcion - 1
-    if 0 <= index < len(tareas):
-        tarea : Tarea = tareas[index]
-        print(f'La Tarea {tarea.get_titulo()} esta asignada a: {tarea.get_usuario()}')
-        opcion = input('Desea modificar la asignacion? Y/N\n')
-        if opcion == 'Y':
-            tarea_id_usuario = usuario.get_id
-            print(f'---------------------->{tarea_id_usuario}')
-            tarea.set_usuario(tarea_id_usuario)
-            print(tarea)
-            actualizar_tarea(tarea)
-            actualizar_dashboard()
-            print('Estado actualizado satisfactoriamente')
-    else:
-        print('Opcion invalida, intente de nuevo')
+def mostrar_tareas_usuario(usuario : Usuario):
+    for tarea in tareas:
+        if tarea.get_usuario() == usuario.get_id() and imprimir_datos_tarea(tarea) is not None:
+            print(f'{imprimir_datos_tarea(tarea)}')
 
 opcion = menu_option()
 
 while opcion != 0 :
 
     if opcion == 1:
-        crear_tarea()
+        if not usuarios:
+            print('Necesita dar de alta al menos 1 usuario antes de crear una tarea')
+        else:
+            crear_tarea()
     if opcion == 2:
         tarea = buscar_tarea()
         if tarea is not None:
@@ -187,11 +182,8 @@ while opcion != 0 :
     if opcion == 6:
         usuario = buscar_usuario()
         if usuario is not None:
-            asignar_tarea_usuario(usuario)
+            mostrar_tareas_usuario(usuario)
     if opcion == 7:
-        # buscar_tareas_usuario()
-        pass
-    if opcion == 8:
         crear_usuario()
 
     opcion = menu_option()

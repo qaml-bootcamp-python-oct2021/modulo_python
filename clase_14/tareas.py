@@ -2,12 +2,12 @@ import estados
 
 class Tarea:
 
-    def __init__(self, titulo='', descripcion='', prioridad='') -> None:
+    def __init__(self, titulo='', descripcion='', prioridad='', usuario=-1) -> None:
         self.__titulo = titulo
         self.__descripcion = descripcion
         self.__prioridad = prioridad
         self.__estado = estados.BACKLOG
-        self.__usuario = 0
+        self.__usuario = usuario
 
     def set_estado(self,estado):
         self.__estado = estado
@@ -31,4 +31,4 @@ class Tarea:
         self.__usuario = usuario
 
     def get_info(self):
-        return f'Titulo: {self.__titulo} - Descripcion: {self.__descripcion} - Prioridad: {self.__prioridad} - Estado: {self.__estado} - Usuario: {self.__usuario}'
+        return f'Titulo: {self.__titulo} - Descripcion: {self.__descripcion} - Prioridad: {self.__prioridad} - Estado: {self.__estado}'
