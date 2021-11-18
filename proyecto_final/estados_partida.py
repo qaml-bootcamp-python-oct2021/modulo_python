@@ -1,0 +1,2 @@
+ACTIVA = 'Activa'
+FINALIZADA = 'Finalizada'
