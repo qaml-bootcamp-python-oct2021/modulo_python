@@ -126,12 +126,54 @@ def cambiar_estado_jugador_jugando(jugador : Jugador):
 
 def finalizar_partida():
     listar_partidas_activas()
+    id_partida = int(input('Seleccione una partida:\n'))
+    listar_jugadores_de_partida(id_partida)
+    ganador = input('Seleccione al ganador: A o B\n')
+    guardar_ganador_partida(id_partida, ganador)
+    cambiar_estado_partida_finalizada(id_partida)
 
 def listar_partidas_activas():
     print('Partidas Activas:\n')
     for partida in partidas:
         if partida.get_estado() == estados_partida.ACTIVA:
             print(f'{partida.get_id()} - {partida.get_nombre()}')
+
+def listar_jugadores_de_partida(id_partida):
+    print('Jugadores:')
+    index = 0
+    while index < len(partidas):
+        if partidas[index].get_id() == id_partida:
+            print(f'A: {partidas[index].get_jugador_a().get_nickname()} Raza: {partidas[index].get_jugador_a().get_raza()}')
+            print(f'B: {partidas[index].get_jugador_b().get_nickname()} Raza: {partidas[index].get_jugador_b().get_raza()}')
+        index +=1
+
+def guardar_ganador_partida(id_partida, ganador):
+    index = 0
+    while index < len(partidas):
+        if partidas[index].get_id() == id_partida:
+            if ganador == 'A':
+                partidas[index].set_ganador(partidas[index].get_jugador_a())
+                partidas[index].set_perdedor(partidas[index].get_jugador_b())
+                
+            elif ganador == 'B':
+                partidas[index].set_ganador(partidas[index].get_jugador_b())
+                partidas[index].set_perdedor(partidas[index].get_jugador_a())
+                
+            else:
+                print('Opcion invalida, intente de nuevo')
+            partidas[index].get_ganador().set_puntos(3)
+            partidas[index].get_ganador().set_estado(estados_jugador.GANADOR)
+            partidas[index].get_perdedor().set_puntos(1)
+            partidas[index].get_perdedor().set_estado(estados_jugador.INACTIVO)
+        index +=1
+
+def cambiar_estado_partida_finalizada(id_partida):
+    index = 0
+    while index < len(partidas):
+        if partidas[index].get_id() == id_partida:
+            partidas[index].set_estado(estados_partida.FINALIZADA)
+            break
+        index +=1
 
 def mostrar_partidas():
     for partida in partidas:

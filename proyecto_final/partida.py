@@ -42,4 +42,7 @@ class Partida:
         self.__estado = estado
 
     def get_info(self):
-        return f'ID: {self.__id} - Partida: {self.__nombre} - Jugador A: {self.__jugador_a.get_nickname()} - Jugador B: {self.__jugador_b.get_nickname()} - Estado: {self.__estado} - Ganador: {self.__ganador} - Perdedor: {self.__perdedor}'
+        try:
+            return f'ID: {self.__id} - Partida: {self.__nombre} - Jugador A: {self.__jugador_a.get_nickname()} - Jugador B: {self.__jugador_b.get_nickname()} - Estado: {self.__estado} - Ganador: {self.__ganador.get_nickname()} - Perdedor: {self.__perdedor.get_nickname()}'
+        except AttributeError:
+            return f'ID: {self.__id} - Partida: {self.__nombre} - Jugador A: {self.__jugador_a.get_nickname()} - Jugador B: {self.__jugador_b.get_nickname()} - Estado: {self.__estado} - Ganador: {self.__ganador} - Perdedor: {self.__perdedor}'
