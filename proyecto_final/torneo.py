@@ -48,6 +48,8 @@ def escoger_raza():
             raza = 'Zerg'
         elif int_raza == 3:
             raza = 'Protoss'
+        else:
+            utils.mostrar_mensaje_valor_invalido()
     except ValueError:
         utils.mostrar_mensaje_valor_invalido()
 
@@ -80,16 +82,19 @@ def hay_jugadores_disponibles():
 
 def crear_partida():
     nombre = input('Ingrese el nombre de la partida\n')
-    jugador_a = buscar_jugador_a()
-    if jugador_a:
-        jugador_b = buscar_jugador_b(jugador_a)
-        if jugador_b:
-            id_partida = generar_id_partida()
-            partida = Partida(id_partida, nombre, jugador_a, jugador_b)
-            cambiar_estado_jugador_jugando(jugador_a)
-            cambiar_estado_jugador_jugando(jugador_b)
-            partidas.append(partida)
-            print(partida.get_info())
+    if nombre != '':
+        jugador_a = buscar_jugador_a()
+        if jugador_a:
+            jugador_b = buscar_jugador_b(jugador_a)
+            if jugador_b:
+                id_partida = generar_id_partida()
+                partida = Partida(id_partida, nombre, jugador_a, jugador_b)
+                cambiar_estado_jugador_jugando(jugador_a)
+                cambiar_estado_jugador_jugando(jugador_b)
+                partidas.append(partida)
+                print(partida.get_info())
+    else:
+        utils.mostrar_mensaje_valor_invalido()
 
 def buscar_jugador(nickname):
     index = 0
@@ -134,19 +139,45 @@ def cambiar_estado_jugador_jugando(jugador : Jugador):
             break
         index +=1
 
+def hay_partidas_activas():
+    partidas_activas = 0
+    index = 0
+    while partidas_activas < 1 and index != len(partidas):
+        if partidas[index].get_estado() == estados_partida.ACTIVA:
+            partidas_activas +=1
+        index +=1
+    if partidas_activas >=1:
+        return True
+    else:
+        return False
+
 def finalizar_partida():
     listar_partidas_activas()
-    id_partida = int(input('Seleccione una partida:\n'))
-    listar_jugadores_de_partida(id_partida)
-    ganador = input('Seleccione al ganador: A o B\n')
-    guardar_ganador_partida(id_partida, ganador)
-    cambiar_estado_partida_finalizada(id_partida)
+    try:
+        id_partida = int(input('Seleccione una partida:\n'))
+        if id_partida_valido(id_partida):
+            listar_jugadores_de_partida(id_partida)
+            ganador = input('Seleccione al ganador: A o B\n')
+            guardar_ganador_partida_cambiar_estado_partida(id_partida, ganador)
+        else:
+            utils.mostrar_mensaje_valor_invalido()
+    except ValueError:
+        utils.mostrar_mensaje_valor_invalido()
 
 def listar_partidas_activas():
     print('Partidas Activas:\n')
     for partida in partidas:
         if partida.get_estado() == estados_partida.ACTIVA:
             print(f'{partida.get_id()} - {partida.get_nombre()}')
+
+def id_partida_valido(id_partida):
+    index = 0
+    while index < len(partidas):
+        if partidas[index].get_id() == id_partida:
+            return True
+        index +=1
+    if index == len(partidas):
+        return False
 
 def listar_jugadores_de_partida(id_partida):
     print('Jugadores:')
@@ -157,7 +188,7 @@ def listar_jugadores_de_partida(id_partida):
             print(f'B: {partidas[index].get_jugador_b().get_nickname()} Raza: {partidas[index].get_jugador_b().get_raza()}')
         index +=1
 
-def guardar_ganador_partida(id_partida, ganador):
+def guardar_ganador_partida_cambiar_estado_partida(id_partida, ganador):
     index = 0
     while index < len(partidas):
         if partidas[index].get_id() == id_partida:
@@ -171,10 +202,14 @@ def guardar_ganador_partida(id_partida, ganador):
                 
             else:
                 print('Opcion invalida, intente de nuevo')
+                break
+            
+            
             partidas[index].get_ganador().set_puntos(3)
             partidas[index].get_ganador().set_estado(estados_jugador.GANADOR)
             partidas[index].get_perdedor().set_puntos(1)
             partidas[index].get_perdedor().set_estado(estados_jugador.INACTIVO)
+            cambiar_estado_partida_finalizada(id_partida)
         index +=1
 
 def cambiar_estado_partida_finalizada(id_partida):
@@ -191,23 +226,23 @@ def mostrar_partidas():
 
 #######################################################
 #Jugadores temporales
-# jugador_1 = Jugador(1, 'MarceloXc', 'marcelo@email.com', 'Terran')
-# jugador_2 = Jugador(2, 'Oden222Xc', 'oden222@email.com', 'Zerg')
-# jugador_3 = Jugador(3, '4X33333Xc', '4x33333@email.com', 'Protoss')
-# jugador_4 = Jugador(4, 'Shiro44Xc', 'shiro44@email.com', 'Terran')
-# jugadores.append(jugador_1)
-# jugadores.append(jugador_2)
-# jugadores.append(jugador_3)
-# jugadores.append(jugador_4)
-# #Partidas temporales
-# partida_1 = Partida(1, 'Marcelo vs Oden', jugador_1, jugador_2)
-# cambiar_estado_jugador_jugando(jugador_1)
-# cambiar_estado_jugador_jugando(jugador_2)
-# partida_2 = Partida(2, '4X vs Shiro', jugador_3, jugador_4)
-# cambiar_estado_jugador_jugando(jugador_3)
-# cambiar_estado_jugador_jugando(jugador_4)
-# partidas.append(partida_1)
-# partidas.append(partida_2)
+jugador_1 = Jugador(1, 'marcelo', 'marcelo@email.com', 'Terran')
+jugador_2 = Jugador(2, 'oden', 'oden222@email.com', 'Zerg')
+jugador_3 = Jugador(3, '4x', '4x33333@email.com', 'Protoss')
+jugador_4 = Jugador(4, 'shiro', 'shiro44@email.com', 'Terran')
+jugadores.append(jugador_1)
+jugadores.append(jugador_2)
+jugadores.append(jugador_3)
+jugadores.append(jugador_4)
+#Partidas temporales
+partida_1 = Partida(1, 'Marcelo vs Oden', jugador_1, jugador_2)
+cambiar_estado_jugador_jugando(jugador_1)
+cambiar_estado_jugador_jugando(jugador_2)
+partida_2 = Partida(2, '4X vs Shiro', jugador_3, jugador_4)
+cambiar_estado_jugador_jugando(jugador_3)
+cambiar_estado_jugador_jugando(jugador_4)
+partidas.append(partida_1)
+partidas.append(partida_2)
 #######################################################
 
 opcion = menu_option()
@@ -222,7 +257,10 @@ while opcion != 0 :
         else:
             print('No hay suficientes jugadores, por favor agregue un jugador')
     if opcion == 3:
-        finalizar_partida()
+        if hay_partidas_activas():
+            finalizar_partida()
+        else:
+            print('No hay partidas activas, por favor cree una nueva partida')
     if opcion == 4:
         mostrar_jugadores()
     if opcion == 5:

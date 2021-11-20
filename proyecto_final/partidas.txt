@@ -1,1 +1,7 @@
 Partidas del Torneo de Starcraft 2
+ID: 1
+Nombre: Marcelo vs Oden
+Estado: Finalizada
+Ganador: marcelo
+Perdedor: oden
+---------------------------------------------

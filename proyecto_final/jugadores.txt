@@ -1,1 +1,29 @@
 Jugadores del Torneo de Starcraft 2
+ID: 1
+Nickname: marcelo
+Email: marcelo@email.com
+Raza: Terran
+Estado: Ganador
+Puntos: 3
+---------------------------------------------
+ID: 2
+Nickname: oden
+Email: oden222@email.com
+Raza: Zerg
+Estado: Inactivo
+Puntos: 1
+---------------------------------------------
+ID: 3
+Nickname: 4x
+Email: 4x33333@email.com
+Raza: Protoss
+Estado: No Jugando
+Puntos: 0
+---------------------------------------------
+ID: 4
+Nickname: shiro
+Email: shiro44@email.com
+Raza: Terran
+Estado: No Jugando
+Puntos: 0
+---------------------------------------------
