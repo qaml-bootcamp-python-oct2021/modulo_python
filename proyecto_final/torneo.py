@@ -1,46 +1,56 @@
 from jugador import Jugador
 from partida import Partida
-import estados_jugador, estados_partida
+import estados_jugador, estados_partida, file_handler, utils
 
 jugadores = []
 partidas = []
 
 def menu_option():
     print('Torneo de Starcraft 2')
-    return int(input('''
+    try:
+        return int(input('''
     1 - Crear Jugador
     2 - Crear Partida
     3 - Finalizar Partida
     4 - Mostrar Jugadores (temporal)
     5 - Mostrar Partidas (temporal)
+    6 - Exportar Partidas y Jugadores
     0 - Para salir
     '''))
+    except ValueError:
+        return -1
 
 def crear_jugador():
-    nickname = input('Ingrese nickname del jugador\n')
-    email = input('Ingrese email del jugador\n')
-    raza = escoger_raza()    
-    id_jugador = generar_id_jugador()
-    jugador = Jugador(id_jugador, nickname, email, raza)
-    jugadores.append(jugador)
+    nickname = input('Ingrese nickname del jugador:\n')
+    if nickname != '':
+        email = input('Ingrese email del jugador:\n')
+        if email != '':
+            raza = escoger_raza()
+            if raza != '':
+                id_jugador = generar_id_jugador()
+                jugador = Jugador(id_jugador, nickname, email, raza)
+                jugadores.append(jugador)
+        else:
+            utils.mostrar_mensaje_valor_invalido()
+    else:
+        utils.mostrar_mensaje_valor_invalido()
 
 def escoger_raza():
     raza = ''
-    print('Escoja la raza que usara el jugador')
+    print('Seleccione la Raza del jugador:')
 
-    int_raza = int(input('''
-    1 - Terran
-    2 - Zerg
-    3 - Protoss
-    '''))
+    try:
+        int_raza = int(input('''1 - Terran\n2 - Zerg\n3 - Protoss\n'''))
 
-    if int_raza == 1:
-        raza = 'Terran'
-    elif int_raza == 2:
-        raza = 'Zerg'
-    elif int_raza == 3:
-        raza = 'Protoss'
-    
+        if int_raza == 1:
+            raza = 'Terran'
+        elif int_raza == 2:
+            raza = 'Zerg'
+        elif int_raza == 3:
+            raza = 'Protoss'
+    except ValueError:
+        utils.mostrar_mensaje_valor_invalido()
+
     return raza
 
 def generar_id_jugador():
@@ -181,23 +191,23 @@ def mostrar_partidas():
 
 #######################################################
 #Jugadores temporales
-jugador_1 = Jugador(1, 'MarceloXc', 'marcelo@email.com', 'Terran')
-jugador_2 = Jugador(2, 'Oden222Xc', 'oden222@email.com', 'Zerg')
-jugador_3 = Jugador(3, '4X33333Xc', '4x33333@email.com', 'Protoss')
-jugador_4 = Jugador(4, 'Shiro44Xc', 'shiro44@email.com', 'Terran')
-jugadores.append(jugador_1)
-jugadores.append(jugador_2)
-jugadores.append(jugador_3)
-jugadores.append(jugador_4)
-#Partidas temporales
-partida_1 = Partida(1, 'Marcelo vs Oden', jugador_1, jugador_2)
-cambiar_estado_jugador_jugando(jugador_1)
-cambiar_estado_jugador_jugando(jugador_2)
-partida_2 = Partida(2, '4X vs Shiro', jugador_3, jugador_4)
-cambiar_estado_jugador_jugando(jugador_3)
-cambiar_estado_jugador_jugando(jugador_4)
-partidas.append(partida_1)
-partidas.append(partida_2)
+# jugador_1 = Jugador(1, 'MarceloXc', 'marcelo@email.com', 'Terran')
+# jugador_2 = Jugador(2, 'Oden222Xc', 'oden222@email.com', 'Zerg')
+# jugador_3 = Jugador(3, '4X33333Xc', '4x33333@email.com', 'Protoss')
+# jugador_4 = Jugador(4, 'Shiro44Xc', 'shiro44@email.com', 'Terran')
+# jugadores.append(jugador_1)
+# jugadores.append(jugador_2)
+# jugadores.append(jugador_3)
+# jugadores.append(jugador_4)
+# #Partidas temporales
+# partida_1 = Partida(1, 'Marcelo vs Oden', jugador_1, jugador_2)
+# cambiar_estado_jugador_jugando(jugador_1)
+# cambiar_estado_jugador_jugando(jugador_2)
+# partida_2 = Partida(2, '4X vs Shiro', jugador_3, jugador_4)
+# cambiar_estado_jugador_jugando(jugador_3)
+# cambiar_estado_jugador_jugando(jugador_4)
+# partidas.append(partida_1)
+# partidas.append(partida_2)
 #######################################################
 
 opcion = menu_option()
@@ -217,5 +227,10 @@ while opcion != 0 :
         mostrar_jugadores()
     if opcion == 5:
         mostrar_partidas()
+    if opcion == 6:
+        file_handler.exportar_info_partidas(partidas)
+        file_handler.exportar_info_jugadores(jugadores)
+    if opcion == -1 or opcion > 6 or opcion < -1:
+        utils.mostrar_mensaje_valor_invalido()
 
     opcion = menu_option()

@@ -24,13 +24,19 @@ class Partida:
         return self.__jugador_b
 
     def get_ganador(self):
-        return self.__ganador
+        try:
+            return self.__ganador
+        except AttributeError:
+            return 'No definido'
 
     def set_ganador(self, jugador):
         self.__ganador = jugador
 
     def get_perdedor(self):
-        return self.__perdedor
+        try:
+            return self.__perdedor
+        except AttributeError:
+            return 'No definido'
 
     def set_perdedor(self, jugador):
         self.__perdedor = jugador

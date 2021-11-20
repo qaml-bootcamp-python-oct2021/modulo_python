@@ -34,4 +34,4 @@ class Jugador:
         self.__puntos += puntos
 
     def get_info(self):
-        return f'ID: {self.__id} - Nickname: {self.__nickname} - Raza: {self.__raza} - Estado: {self.__estado} - Puntos: {self.__puntos}'
+        return f'Nickname: {self.__nickname} - Raza: {self.__raza} - Estado: {self.__estado}   - Puntos: {self.__puntos}'
