@@ -3,13 +3,12 @@ import file_handler
 
 
 def convertir_actividad_to_dict(tarea : Tarea):
-    dict_actividad = {
+    return  {
         "titulo" : tarea.get_titulo(),
         "descripcion" : tarea.get_descripcion(),
         "prioridad" : tarea.get_prioridad(),
         "estado" : tarea.get_estado()
     }
-    return dict_actividad
 
 def get_actividades_from_file():
     list_actividades = []

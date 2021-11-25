@@ -36,6 +36,7 @@ def actualizar_actividades():
     file_handler.guardar_actividades(actividades)
 
 def run_project():
+
     opcion = menu_option()
 
     while opcion != 0 :
