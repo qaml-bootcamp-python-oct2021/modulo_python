@@ -100,4 +100,5 @@ def export_result_to_file(dic_games, dic_players):
 
 def create_dir_files():
     if not os.path.exists(constants.DIR_FILES):
-        os.mkdir(constants.DIR_FILES)
+        os.makedirs(constants.DIR_FILES)
+
