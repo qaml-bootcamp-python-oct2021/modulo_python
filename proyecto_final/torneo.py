@@ -12,8 +12,8 @@ def menu_option():
     1 - Crear Jugador
     2 - Crear Partida
     3 - Finalizar Partida
-    4 - Mostrar Jugadores (temporal)
-    5 - Mostrar Partidas (temporal)
+    4 - Mostrar Jugadores
+    5 - Mostrar Partidas
     6 - Exportar Partidas y Jugadores
     0 - Para salir
     '''))
@@ -223,27 +223,6 @@ def cambiar_estado_partida_finalizada(id_partida):
 def mostrar_partidas():
     for partida in partidas:
         print(partida.get_info())
-
-#######################################################
-#Jugadores temporales
-jugador_1 = Jugador(1, 'marcelo', 'marcelo@email.com', 'Terran')
-jugador_2 = Jugador(2, 'oden', 'oden222@email.com', 'Zerg')
-jugador_3 = Jugador(3, '4x', '4x33333@email.com', 'Protoss')
-jugador_4 = Jugador(4, 'shiro', 'shiro44@email.com', 'Terran')
-jugadores.append(jugador_1)
-jugadores.append(jugador_2)
-jugadores.append(jugador_3)
-jugadores.append(jugador_4)
-#Partidas temporales
-partida_1 = Partida(1, 'Marcelo vs Oden', jugador_1, jugador_2)
-cambiar_estado_jugador_jugando(jugador_1)
-cambiar_estado_jugador_jugando(jugador_2)
-partida_2 = Partida(2, '4X vs Shiro', jugador_3, jugador_4)
-cambiar_estado_jugador_jugando(jugador_3)
-cambiar_estado_jugador_jugando(jugador_4)
-partidas.append(partida_1)
-partidas.append(partida_2)
-#######################################################
 
 opcion = menu_option()
 
