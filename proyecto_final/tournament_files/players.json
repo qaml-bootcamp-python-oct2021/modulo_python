@@ -1,0 +1,32 @@
+{
+    "players": [
+        {
+            "name": "capi",
+            "email": "capi@gmail.com",
+            "race": "PROTOSS",
+            "score": 1,
+            "status": "Inactivo"
+        },
+        {
+            "name": "terran",
+            "email": "terran@gmail.com",
+            "race": "TERRAN",
+            "score": 4,
+            "status": "Inactivo"
+        },
+        {
+            "name": "oso",
+            "email": "oso@gmail.com",
+            "race": "ZERG",
+            "score": 1,
+            "status": "Inactivo"
+        },
+        {
+            "name": "super",
+            "email": "super@gmail.com",
+            "race": "PROTOSS",
+            "score": 6,
+            "status": "Ganador"
+        }
+    ]
+}

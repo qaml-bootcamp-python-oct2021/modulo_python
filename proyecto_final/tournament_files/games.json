@@ -1,0 +1,67 @@
+{
+    "games": [
+        {
+            "name": "round1 A",
+            "players": {
+                "1": {
+                    "name": "terran",
+                    "email": "terran@gmail.com",
+                    "race": "TERRAN",
+                    "score": 4,
+                    "status": "Inactivo"
+                },
+                "2": {
+                    "name": "oso",
+                    "email": "oso@gmail.com",
+                    "race": "ZERG",
+                    "score": 1,
+                    "status": "Inactivo"
+                }
+            },
+            "winner_key": "1",
+            "status": "Finalizado"
+        },
+        {
+            "name": "round 1 B",
+            "players": {
+                "1": {
+                    "name": "capi",
+                    "email": "capi@gmail.com",
+                    "race": "PROTOSS",
+                    "score": 1,
+                    "status": "Inactivo"
+                },
+                "2": {
+                    "name": "super",
+                    "email": "super@gmail.com",
+                    "race": "PROTOSS",
+                    "score": 6,
+                    "status": "Ganador"
+                }
+            },
+            "winner_key": "2",
+            "status": "Finalizado"
+        },
+        {
+            "name": "final",
+            "players": {
+                "1": {
+                    "name": "super",
+                    "email": "super@gmail.com",
+                    "race": "PROTOSS",
+                    "score": 6,
+                    "status": "Ganador"
+                },
+                "2": {
+                    "name": "terran",
+                    "email": "terran@gmail.com",
+                    "race": "TERRAN",
+                    "score": 4,
+                    "status": "Inactivo"
+                }
+            },
+            "winner_key": "1",
+            "status": "Finalizado"
+        }
+    ]
+}
