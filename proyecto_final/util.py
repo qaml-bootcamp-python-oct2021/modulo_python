@@ -1,8 +1,10 @@
+import os
 from player_race import PlayerRace
 from player_status import PlayerStatus
 from player import Player
 from game import Game
 import constants
+import messages
 import json
 
 from game_status import GameStatus
@@ -19,7 +21,7 @@ def validate_race_option(option):
     try:
         return PlayerRace(int(option))
     except ValueError:
-        print('No race found, try again!')
+        print(messages.ERROR_RACE_NO_FOUND)
         return None
 
 def validate_create_game(games, new_game):
@@ -34,7 +36,8 @@ def validate_create_game(games, new_game):
 def validate_winner_game(player_key):
     isValidate = player_key == constants.PLAYER_KEY_1 or player_key == constants.PLAYER_KEY_2
     if not isValidate:
-        print('No player found, try again!')
+        print(messages.ERROR_PLAYER_NO_FOUND)
+       
     return isValidate
 
 
@@ -88,8 +91,13 @@ def convert_player_to_dic(player: Player):
 
 
 def export_result_to_file(dic_games, dic_players):
+    create_dir_files()
     with open(constants.GAME_FILE, 'w') as file:
         json.dump(dic_games, file)
 
     with open(constants.PLAYER_FILE, 'w') as file:
         json.dump(dic_players, file)
+
+def create_dir_files():
+    if not os.path.exists(constants.DIR_FILES):
+        os.mkdir(constants.DIR_FILES)

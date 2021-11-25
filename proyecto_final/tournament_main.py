@@ -4,6 +4,7 @@ from game import Game
 from player_status import PlayerStatus
 from game_status import GameStatus
 import constants
+import messages
 
 import util
 
@@ -13,17 +14,17 @@ games = []
 
 def create_player(name):
     if name is None:
-        name = input('Insert name:\n')
+        name = input(messages.INPUT_NAME)
         if search_player_by_name(name) is not None:
-            print(f'Player {name} already exists ')
+            print(f'Player {name} {messages.INFO_ALREADY_EXIST} ')
             return None
-    email = input('Insert email:\n')
+    email = input(messages.INPUT_EMAIL)
     race_id = input(util.get_race_option())
     race_enum = util.validate_race_option(race_id)
     if race_enum is not None:
         new_player = Player(name, email, race_enum)
         players.append(new_player)
-        print('Player created successfully!')
+        print(messages.SUCCESS_PLAYER_CREATE)
         return new_player
 
 
@@ -36,37 +37,40 @@ def search_player_by_name(player_name):
     return None
 
 
-def active_player(player_name):
+def create_or_search_player(player_name):
     player: Player = search_player_by_name(player_name)
     if player is not None:
         if player.get_status() == PlayerStatus.INACTIVE.value or player.get_status() == PlayerStatus.PLAYING.value:
             print(f'Player with status: {player.get_status()}, insert another')
             return None
     else:
-        print('Creating player, insert info:')
+        print(messages.INFO_PLAYER_CREATE)
         player = create_player(player_name)
-    player.set_status(PlayerStatus.PLAYING)
+        if player is None:
+            print(messages.ERROR_GRAL)
+
     return player
 
 
 def ask_for_player(key_player):
     player_game = None
     while player_game == None:
-        player_game = active_player(
+        player_game = create_or_search_player(
             input(f'Insert player {key_player} (create or search):\n'))
+    player_game.set_status(PlayerStatus.PLAYING)
     return player_game
 
 
 def create_game():
-    name = input('Insert game name:\n')
+    name = input(messages.INPUT_GAME)
     if util.validate_create_game(games, name):
         first_player = ask_for_player(constants.PLAYER_KEY_1)
         second_player = ask_for_player(constants.PLAYER_KEY_2)
         new_game = Game(name, first_player, second_player)
         games.append(new_game)
-        print('Game created and active!')
+        print(messages.SUCCESS_GAME_CREATE)
     else:
-        print(f'Game {name} already exists!')
+        print(f'Game {name} {messages.INFO_ALREADY_EXIST}')
 
 
 def search_game_by_name(game_name):
@@ -80,15 +84,15 @@ def search_game_by_name(game_name):
 
 
 def finish_game():
-    game: Game = search_game_by_name(input('Insert game name:\n'))
+    game: Game = search_game_by_name(input(messages.INPUT_GAME))
     if game is None:
-        print('Game no found, Try again!')
+        print(messages.ERROR_GAME_NO_FOUND)
     elif game.get_status() == GameStatus.ACTIVE.value:
         if register_players_score(game):
             game.set_status(GameStatus.DONE)
-            print(f'{game.get_name()} finished successfully !')
+            print(f'{game.get_name()} {messages.SUCCESS_FINISH} ')
     else:
-        print(f'{game.get_name()} is already finished')
+        print(f'{game.get_name()} {messages.INFO_ALREADY_FINISH}')
 
 
 def register_players_score(game: Game):
@@ -108,8 +112,7 @@ def register_players_score(game: Game):
 
 
 def finish_tournament():
-    confirm = input(
-        'You are about to finish the tournament, Do you  want to  continue?:(Y/N) \n')
+    confirm = input(messages.WARNING_TOURNAMENT_FINISH)
     if confirm.upper() == 'Y':
         export_result()
         amount_games = len(games)
@@ -117,7 +120,9 @@ def finish_tournament():
             winner_tournament: Player = util.get_winner_tournament(players)
             print(f'The winner is: {winner_tournament.get_info()}')
         else:
-            print('Tournament without winner')
+            print(messages.INFO_TOURNAMENT_WINNER)
+        return True
+    return False
 
 
 def export_result():
@@ -135,7 +140,7 @@ def export_result():
 def get_menu():
     try:
         return int(input('''
-        ** Select an option**
+        ** Select an option **
         1 - Create player
         2 - Create game
         3 - Finish game
@@ -159,12 +164,11 @@ while menu != 0:
 
     elif menu == 4:
         if util.validate_end_tornament(games):
-            finish_tournament()
-            break
+            if finish_tournament():
+                break
         else:
-            print(
-                'To finish the tournament ,is necessary to have games with status Finished!')
+            print(messages.ERROR_TOURNAMENT_FINISH)
 
     else:
-        print('¡No menu option found, try again!')
+        print(messages.ERROR_MENU_OPTION)
     menu = get_menu()
