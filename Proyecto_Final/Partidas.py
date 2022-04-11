@@ -5,7 +5,7 @@ class Partida:
         self.__jugador_a = jugador_a
         self.__jugador_b = jugador_b
         self.__ganador = ganador
-        self.__estado_partida = Estados_Partidas.ACTIVAS
+        self.__estado_partida = Estados_Partidas.ACTIVAS 
 
 
     def get_nombre_partida(self):
